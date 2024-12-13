@@ -12,9 +12,9 @@ sudo mkdir -p /opt/rustdesk
 2. Docker command for HBBS
 ```bash
 sudo docker run -d \
-  -p 21115:21115/tcp \
-  -p 21116:21116/tcp \
-  -p 21116:21116/udp \
+  -p 21115:21115/tcp \ # NAT type test
+  -p 21116:21116/tcp \ # ID registration and heartbeat service
+  -p 21116:21116/udp \ # ID registration and heartbeat service
   -v /opt/rustdesk:/root \
   --name rustdesk-hbbs \
   rustdesk/rustdesk-server hbbs
@@ -23,7 +23,7 @@ sudo docker run -d \
 3. Docker command for HBBR
 ```bash
 sudo docker run -d \
-  -p 21117:21117/tcp \
+  -p 21117:21117/tcp \ # Relay services.
   -v /opt/rustdesk:/root \
   --name rustdesk-hbbr \
   rustdesk/rustdesk-server hbbr
